@@ -1,4 +1,10 @@
 // Learn more https://docs.expo.io/guides/customizing-metro
+
+// expo-router ships an SDK-56 guard that errors when app code imports @react-navigation/*.
+// The playground deliberately uses standalone react-navigation (to exercise
+// @rozenite/react-navigation-plugin), and never uses expo-router for routing, so silence it.
+process.env.EXPO_ROUTER_DISABLE_RN_NAVIGATION_CHECK = '1';
+
 const { getDefaultConfig } = require('expo/metro-config');
 const { composeMetroConfigTransformers } = require('@rozenite/tools');
 const { withRozenite } = require('@rozenite/metro');
